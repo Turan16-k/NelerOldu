@@ -1,0 +1,16 @@
+{
+  "name": "last30days",
+  "version": "1.0.0",
+  "description": "Bir konuyu Hacker News, Reddit ve GitHub üzerinde gerçek etkileşime göre araştıran web uygulaması. last30days-skill projesinden ilham alınmıştır.",
+  "main": "server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": ["research", "aggregator", "reddit", "hackernews", "github", "trends"],
+  "license": "MIT"
+}

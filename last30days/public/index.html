@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>last30days · Son 30 Günün Nabzı</title>
+    <meta
+      name="description"
+      content="Herhangi bir konuyu Reddit, Hacker News ve GitHub üzerinde gerçek etkileşime göre araştır."
+    />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="aurora" aria-hidden="true"></div>
+
+    <header class="topbar">
+      <div class="brand">
+        <span class="logo">◷</span>
+        <div>
+          <h1>last30days</h1>
+          <p class="tagline">Son 30 günün nabzı — gerçek etkileşime göre</p>
+        </div>
+      </div>
+      <button id="themeToggle" class="icon-btn" title="Tema değiştir" aria-label="Tema değiştir">
+        <span class="theme-icon">☾</span>
+      </button>
+    </header>
+
+    <main>
+      <!-- Arama paneli -->
+      <section class="search-panel glass">
+        <form id="searchForm">
+          <div class="search-row">
+            <input
+              id="topic"
+              type="text"
+              placeholder="Bir konu yaz: yapay zeka, Bitcoin, OpenAI, deprem…"
+              autocomplete="off"
+              required
+            />
+            <button type="submit" id="searchBtn" class="primary">
+              <span class="btn-label">Araştır</span>
+            </button>
+          </div>
+
+          <div class="chips" id="exampleChips">
+            <span class="chip-label">Örnekler:</span>
+          </div>
+
+          <div class="controls">
+            <div class="control-group">
+              <label>Zaman aralığı</label>
+              <div class="segmented" id="rangeSeg">
+                <button type="button" data-days="7">7g</button>
+                <button type="button" data-days="30" class="active">30g</button>
+                <button type="button" data-days="90">90g</button>
+                <button type="button" data-days="365">1y</button>
+              </div>
+            </div>
+            <div class="control-group">
+              <label>Kaynaklar</label>
+              <div class="source-toggles" id="sourceToggles"></div>
+            </div>
+            <div class="control-group">
+              <label>Sırala</label>
+              <select id="sortBy">
+                <option value="engagement">Etkileşim</option>
+                <option value="date">Tarih (yeni)</option>
+                <option value="comments">Yorum sayısı</option>
+                <option value="score">Oy / Yıldız</option>
+              </select>
+            </div>
+          </div>
+        </form>
+      </section>
+
+      <!-- Özet (brief) -->
+      <section id="brief" class="brief hidden"></section>
+
+      <!-- Durum mesajları -->
+      <div id="status" class="status"></div>
+
+      <!-- Sonuçlar -->
+      <section id="results" class="results"></section>
+    </main>
+
+    <footer class="foot">
+      <span
+        >Veriler Hacker News, Reddit ve GitHub'ın herkese açık API'lerinden alınır.
+        İlham: <a href="https://github.com/mvanhorn/last30days-skill" target="_blank" rel="noopener">last30days-skill</a></span
+      >
+    </footer>
+
+    <!-- Sonuç kartı şablonu -->
+    <template id="cardTemplate">
+      <article class="card">
+        <div class="card-source"></div>
+        <div class="card-body">
+          <a class="card-title" target="_blank" rel="noopener"></a>
+          <p class="card-summary"></p>
+          <div class="card-meta">
+            <span class="meta-engagement" title="Trend skoru — her kaynak kendi içinde 0–100 normalize edilir"></span>
+            <span class="meta-score"></span>
+            <span class="meta-comments"></span>
+            <span class="meta-author"></span>
+            <span class="meta-date"></span>
+            <span class="meta-also"></span>
+          </div>
+        </div>
+      </article>
+    </template>
+
+    <script src="app.js"></script>
+  </body>
+</html>
